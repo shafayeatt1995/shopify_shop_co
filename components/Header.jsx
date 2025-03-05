@@ -7,6 +7,7 @@ import {
   ShoppingCartIcon,
   XIcon,
 } from "lucide-react";
+import Link from "next/link";
 export default function Header() {
   return (
     <section>
@@ -39,13 +40,13 @@ export default function Header() {
               </a>
             </li>
             <li>
-              <a href="#">On Sale</a>
+              <Link href="/category">Category</Link>
             </li>
             <li>
-              <a href="#">New Arrivals</a>
+              <Link href="/product">Product</Link>
             </li>
             <li>
-              <a href="#">Brands</a>
+              <Link href="/cart">Cart</Link>
             </li>
           </ul>
           <div className="flex-1 hidden lg:block">
