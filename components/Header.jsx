@@ -31,7 +31,9 @@ export default function Header() {
         <div className="flex items-center justify-between gap-10">
           <div className="flex gap-3">
             <MenuIcon size={26} className="cursor-pointer lg:hidden" />
-            <img src="/images/logo.png" className="max-w-40 max-h-6" />
+            <Link href="/">
+              <img src="/images/logo.png" className="max-w-40 max-h-6" />
+            </Link>
           </div>
           <ul className="ml-auto gap-6 hidden md:flex">
             <li>
