@@ -1,11 +1,9 @@
 "use client";
-import Breadcrumb from "@/components/Breadcrumb";
-import GreenCheck from "@/components/GreenCheck";
 import ProductCard from "@/components/ProductCard";
-import Rating from "@/components/Rating";
 import {
   CheckIcon,
   ChevronDownIcon,
+  ChevronRightIcon,
   EllipsisIcon,
   MinusIcon,
   PlusIcon,
@@ -13,6 +11,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { useState } from "react";
+import { integralCF } from "../fonts";
 
 export default function Product() {
   const [links] = useState(["Home", "Shop", "Men", "T-shirt"]);
@@ -108,7 +107,18 @@ export default function Product() {
   return (
     <>
       <section className="container mx-auto px-4 lg:px-0 lg:pt-6 py-5 lg:pb-9">
-        <Breadcrumb links={links} />
+        <div className="flex items-center gap-1">
+          {links.map((link, index) => (
+            <a
+              href="#"
+              key={index}
+              className="text-black/60 hover:text-black cursor-pointer flex items-center"
+            >
+              {link}
+              {index !== links.length - 1 && <ChevronRightIcon size={18} />}
+            </a>
+          ))}
+        </div>
       </section>
       <section className="container mx-auto px-4 lg:px-0 lg:pb-20 pb-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
@@ -139,12 +149,45 @@ export default function Product() {
             </div>
           </div>
           <div className="w-full">
-            <h1 className="text-2xl lg:text-[40px] font-black pb-3 uppercase">
+            <h1
+              className={`text-2xl lg:text-[40px] font-bold pb-3 uppercase ${integralCF.className}`}
+            >
               One Life Graphic T-shirt
             </h1>
             <div className="flex items-center gap-3 pb-3">
               <div className="flex items-center gap-1.5">
-                <Rating rating={product.rating} />
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <React.Fragment key={i}>
+                    {i < Math.floor(+product.rating) ? (
+                      <svg
+                        width="18"
+                        height="17"
+                        viewBox="0 0 18 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.8487 0.255005L11.4679 5.89491L17.6412 6.6431L13.0867 10.8769L14.2827 16.9793L8.8487 13.956L3.41466 16.9793L4.61073 10.8769L0.0562391 6.6431L6.22949 5.89491L8.8487 0.255005Z"
+                          fill="#FFC633"
+                        />
+                      </svg>
+                    ) : i === Math.floor(+product.rating) &&
+                      +product.rating % 1 !== 0 ? (
+                      <svg
+                        width="10"
+                        height="17"
+                        viewBox="0 0 10 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.76406 16.9793L9.1981 13.956V0.255005L6.57889 5.89491L0.40564 6.6431L4.96013 10.8769L3.76406 16.9793Z"
+                          fill="#FFC633"
+                        />
+                      </svg>
+                    ) : null}
+                  </React.Fragment>
+                ))}
               </div>
               <p className="text-sm">
                 {product.rating}/<span className="text-black/60">5</span>
@@ -267,16 +310,61 @@ export default function Product() {
       <section className="container mx-auto px-4 lg:px-0 pt-6">
         <div className="grid lg:grid-cols-2 gap-5">
           {reviews.map((review, index) => (
-            <div className="border px-8 py-7 rounded-2xl min-h-full">
+            <div
+              className="border px-8 py-7 rounded-2xl min-h-full"
+              key={index}
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1 mb-5">
-                  <Rating rating={review.rating} />
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <React.Fragment key={i}>
+                      {i < Math.floor(+review.rating) ? (
+                        <svg
+                          width="18"
+                          height="17"
+                          viewBox="0 0 18 17"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8.8487 0.255005L11.4679 5.89491L17.6412 6.6431L13.0867 10.8769L14.2827 16.9793L8.8487 13.956L3.41466 16.9793L4.61073 10.8769L0.0562391 6.6431L6.22949 5.89491L8.8487 0.255005Z"
+                            fill="#FFC633"
+                          />
+                        </svg>
+                      ) : i === Math.floor(+review.rating) &&
+                        +review.rating % 1 !== 0 ? (
+                        <svg
+                          width="10"
+                          height="17"
+                          viewBox="0 0 10 17"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.76406 16.9793L9.1981 13.956V0.255005L6.57889 5.89491L0.40564 6.6431L4.96013 10.8769L3.76406 16.9793Z"
+                            fill="#FFC633"
+                          />
+                        </svg>
+                      ) : null}
+                    </React.Fragment>
+                  ))}
                 </div>
                 <EllipsisIcon className="cursor-pointer text-black/40" />
               </div>
               <h2 className="font-bold text-xl mb-2 flex items-center gap-1">
                 {review.name}
-                <GreenCheck />
+                <svg
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 0.829102C8.07164 0.829102 6.18657 1.40093 4.58319 2.47227C2.97982 3.54362 1.73013 5.06636 0.992179 6.84794C0.254225 8.62952 0.061142 10.5899 0.437348 12.4812C0.813554 14.3725 1.74215 16.1098 3.10571 17.4734C4.46928 18.837 6.20656 19.7656 8.09787 20.1418C9.98919 20.518 11.9496 20.3249 13.7312 19.5869C15.5127 18.849 17.0355 17.5993 18.1068 15.9959C19.1782 14.3925 19.75 12.5075 19.75 10.5791C19.7473 7.99408 18.7192 5.51571 16.8913 3.68783C15.0634 1.85994 12.585 0.831831 10 0.829102ZM14.2806 8.85973L9.03063 14.1097C8.96097 14.1795 8.87826 14.2348 8.78721 14.2725C8.69616 14.3103 8.59857 14.3297 8.5 14.3297C8.40144 14.3297 8.30385 14.3103 8.2128 14.2725C8.12175 14.2348 8.03903 14.1795 7.96938 14.1097L5.71938 11.8597C5.57865 11.719 5.49959 11.5281 5.49959 11.3291C5.49959 11.1301 5.57865 10.9392 5.71938 10.7985C5.86011 10.6577 6.05098 10.5787 6.25 10.5787C6.44903 10.5787 6.6399 10.6577 6.78063 10.7985L8.5 12.5188L13.2194 7.79848C13.2891 7.72879 13.3718 7.67352 13.4628 7.63581C13.5539 7.59809 13.6515 7.57868 13.75 7.57868C13.8486 7.57868 13.9461 7.59809 14.0372 7.63581C14.1282 7.67352 14.2109 7.72879 14.2806 7.79848C14.3503 7.86816 14.4056 7.95088 14.4433 8.04193C14.481 8.13297 14.5004 8.23056 14.5004 8.3291C14.5004 8.42765 14.481 8.52523 14.4433 8.61627C14.4056 8.70732 14.3503 8.79004 14.2806 8.85973Z"
+                    fill="#01AB31"
+                  />
+                </svg>
               </h2>
               <p className="text-black/60">{review.message}</p>
               <p className="text-black/60 font-medium mt-6">
@@ -286,14 +374,16 @@ export default function Product() {
           ))}
         </div>
         <div className="flex justify-center mt-9">
-          <button className="py-3 rounded-full border w-2/3 lg:w-auto">
+          <button className="py-3 rounded-full border px-10">
             Load More Reviews
           </button>
         </div>
       </section>
       <section className="pt-16 pb-20">
         <div className="container mx-auto px-4 lg:px-0">
-          <h2 className="font-black text-4xl lg:text-5xl text-center lg:pb-14 pb-8 uppercase px-14">
+          <h2
+            className={`font-bold text-4xl lg:text-5xl text-center lg:pb-14 pb-8 uppercase px-14 ${integralCF.className}`}
+          >
             You might also like
           </h2>
           <div className="overflow-x-auto pb-5">

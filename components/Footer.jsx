@@ -6,13 +6,16 @@ import {
   MailIcon,
   TwitterIcon,
 } from "lucide-react";
+import { integralCF } from "@/app/fonts";
 
 export default function Footer() {
   return (
     <section className="bg-[#F2F0F1] px-4 lg:px-0 mt-40 lg:mt-24">
       <div className="container mx-auto -translate-y-1/2">
         <div className="bg-black rounded-3xl px-6 lg:px-16 py-9 flex items-center flex-col lg:flex-row lg:gap-14 gap-8">
-          <h2 className="text-white text-[32px] lg:text-[40px] font-black w-full">
+          <h2
+            className={`text-white text-[32px] lg:text-[40px] font-bold w-full ${integralCF.className}`}
+          >
             STAY UPTO DATE ABOUT OUR LATEST OFFERS
           </h2>
           <form className="w-full flex flex-col items-end gap-3.5">
@@ -80,8 +83,8 @@ export default function Footer() {
           </div>
           <div className="w-full grid lg:grid-cols-4 grid-cols-2 items-center gap-6">
             <div>
-              <h3 className="font-semibold">Company</h3>
-              <ul className="mt-3 lg:mt-6 space-y-3">
+              <h3 className="font-semibold uppercase">Company</h3>
+              <ul className="mt-3 lg:mt-6 space-y-4">
                 <li>
                   <a
                     href="#"
@@ -117,8 +120,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold">Help</h3>
-              <ul className="mt-3 lg:mt-6 space-y-3">
+              <h3 className="font-semibold uppercase">Help</h3>
+              <ul className="mt-3 lg:mt-6 space-y-4">
                 <li>
                   <a
                     href="#"
@@ -154,8 +157,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold">FAQ</h3>
-              <ul className="mt-3 lg:mt-6 space-y-3">
+              <h3 className="font-semibold uppercase">FAQ</h3>
+              <ul className="mt-3 lg:mt-6 space-y-4">
                 <li>
                   <a
                     href="#"
@@ -191,8 +194,8 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold">Resources</h3>
-              <ul className="mt-3 lg:mt-6 space-y-3">
+              <h3 className="font-semibold uppercase">Resources</h3>
+              <ul className="mt-3 lg:mt-6 space-y-4">
                 <li>
                   <a
                     href="#"
@@ -231,8 +234,14 @@ export default function Footer() {
         </div>
         <hr className="lg:my-10 my-4" />
         <div className="flex flex-col lg:flex-row justify-between items-center pb-16 gap-4 px-0 ">
-          <p className="text-black/60">
-            Shop.co © 2000-2023, All Rights Reserved
+          <p className="text-black/60 text-sm lg:text-base">
+            Shop.co © {new Date().getFullYear()}. Developed by{" "}
+            <a
+              href="http://github.com/shafayeatt1995"
+              className="underline text-black font-bold"
+            >
+              Shafayet Al-Anik
+            </a>
           </p>
           <div className="px-10">
             <img

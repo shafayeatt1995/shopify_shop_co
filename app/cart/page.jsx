@@ -1,13 +1,14 @@
 "use client";
-import Breadcrumb from "@/components/Breadcrumb";
 import {
   ArrowRightIcon,
+  ChevronRightIcon,
   MinusIcon,
   PlusIcon,
   TagIcon,
   Trash2Icon,
 } from "lucide-react";
 import { useState, Fragment } from "react";
+import { integralCF } from "../fonts";
 
 export default function Cart() {
   const [links] = useState(["Home", "Cart"]);
@@ -53,10 +54,25 @@ export default function Cart() {
   return (
     <>
       <section className="container mx-auto px-4 lg:px-0 lg:pt-6 py-5 lg:pb-9">
-        <Breadcrumb links={links} />
+        <div className="flex items-center gap-1">
+          {links.map((link, index) => (
+            <a
+              href="#"
+              key={index}
+              className="text-black/60 hover:text-black cursor-pointer flex items-center"
+            >
+              {link}
+              {index !== links.length - 1 && <ChevronRightIcon size={18} />}
+            </a>
+          ))}
+        </div>
       </section>
       <section className="container mx-auto px-4 lg:px-0 pb-20">
-        <h1 className="text-[40px] font-black uppercase mb-6">You cart</h1>
+        <h1
+          className={`text-[40px] font-bold uppercase mb-6 ${integralCF.className}`}
+        >
+          Your cart
+        </h1>
         <div className="flex flex-col lg:flex-row gap-5">
           <div className="flex-[3] p-3.5 lg:px-6 lg:py-5 border rounded-3xl space-y-6">
             {cartItems.map((item, index) => (
@@ -88,7 +104,7 @@ export default function Cart() {
                     </div>
 
                     <div className="flex justify-between items-center">
-                      <p className="font-black text-xl lg:text-2xl">
+                      <p className="font-bold text-xl lg:text-2xl">
                         ${item.price}
                       </p>
 

@@ -62,7 +62,7 @@ export default function Header() {
               <input
                 type="search"
                 placeholder="Search for products..."
-                className="w-full bg-[#F0F0F0] border-none outline-none py-3 pl-12 rounded-full text-black/40"
+                className="w-full bg-[#F0F0F0] border-none outline-none py-3 pl-12 pr-5 rounded-full text-black/40"
               />
             </form>
           </div>

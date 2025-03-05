@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
-import Breadcrumb from "@/components/Breadcrumb";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -146,9 +145,20 @@ export default function Category() {
   return (
     <>
       <section className="container mx-auto px-4 lg:px-0 lg:pt-6 py-5 lg:pb-9">
-        <Breadcrumb links={links} />
+        <div className="flex items-center gap-1">
+          {links.map((link, index) => (
+            <a
+              href="#"
+              key={index}
+              className="text-black/60 hover:text-black cursor-pointer flex items-center"
+            >
+              {link}
+              {index !== links.length - 1 && <ChevronRightIcon size={18} />}
+            </a>
+          ))}
+        </div>
       </section>
-      <section className="container mx-auto px-4 lg:px-0 lg:mb-20 mb-12">
+      <section className="container mx-auto px-4 lg:px-0 lg:pb-20 pb-14">
         <div className="flex gap-5">
           <div
             className={`w-screen lg:w-96 fixed lg:relative lg:left-0 lg:top-auto top-24 transition-all duration-300 z-10 ${
@@ -331,7 +341,7 @@ export default function Category() {
             </div>
             <hr />
             <div className="flex justify-between items-center gap-2">
-              <button className="gap-1 lg:gap-2 flex items-center border py-2 px-2 lg:px-4 rounded-lg cursor-pointer hover:bg-black hover:text-white transition-all duration-200 text-xs lg:text-base font-medium lg:font-normal">
+              <button className="gap-1 lg:gap-2 flex items-center border py-2 px-2 lg:px-4 rounded-md lg:rounded-lg cursor-pointer hover:bg-black hover:text-white transition-all duration-200 text-xs lg:text-base font-medium lg:font-normal">
                 <ArrowLeftIcon size={isMobile ? 12 : 24} />
                 Previous
               </button>
@@ -358,7 +368,7 @@ export default function Category() {
                   10
                 </button>
               </div>
-              <button className="gap-2 flex items-center border py-2 px-2 lg:px-4 rounded-lg cursor-pointer hover:bg-black hover:text-white transition-all duration-200 text-xs lg:text-base font-medium lg:font-normal">
+              <button className="gap-2 flex items-center border py-2 px-2 lg:px-4 rounded-md lg:rounded-lg cursor-pointer hover:bg-black hover:text-white transition-all duration-200 text-xs lg:text-base font-medium lg:font-normal">
                 Next
                 <ArrowRightIcon size={isMobile ? 12 : 24} />
               </button>

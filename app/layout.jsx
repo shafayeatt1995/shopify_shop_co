@@ -1,12 +1,7 @@
-import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+import { satoshi } from "./fonts";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="hydrated">
-      <body className={`${dmSans.className} antialiased`}>
+      <body className={`${satoshi.className} antialiased`}>
         <Header />
         {children}
         <Footer />
